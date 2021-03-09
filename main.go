@@ -3,11 +3,18 @@ package main
 import (
 	"fmt"
 
-	"github.com/Ho-yeong/practiceGo/banking"
+	"github.com/Ho-yeong/practiceGo/accounts"
 )
 
 func main() {
-	account := banking.Account{Owner: "simon"}
+	account := accounts.NewAccount("simon")
+	account.Deposit(1000)
+	fmt.Println(account.Balance())
 
-	fmt.Println(account)
+	err := account.Withdraw(20000)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(account.Balance())
+
 }
